@@ -1,22 +1,33 @@
-import React from "react"
-import { Link } from "gatsby"
+import 'semantic-ui-css/semantic.min.css';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import React from "react";
+import CardArticle from "../components/article";
+import { graphql } from 'gatsby'
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+const IndexPage = (props) => {
+  const articles = props.data.allMongodbBlogArticle.edges;
+  return (
+    <div>
+      {articles.map(article =>
+        <CardArticle article={article.node} key={article.node.id}/>
+      )}
     </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+  );
+}
 
-export default IndexPage
+export default IndexPage;
+
+export const pageQuery = graphql`
+  query {
+    allMongodbBlogArticle {
+      edges {
+        node {
+          id
+          title
+          content
+          image
+        }
+      }
+    }
+  }
+`;

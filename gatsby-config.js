@@ -30,5 +30,28 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      // The name of the plugin
+      resolve: 'gatsby-source-mongodb',
+      options: {
+          // Name of the database and collection where are books reside
+          dbName: 'blog',
+          collection: 'article',
+          server: {
+              address: 'website-shard-00-01.hzfpk.mongodb.net',
+              port: 27017
+          },
+          auth: {
+              user: 'shecodes-rw',
+              password: 'shecodes-rw'
+          },
+          extraParams: {
+              replicaSet: 'Main-shard-0',
+              ssl: true,
+              authSource: 'admin',
+              retryWrites: true
+          }
+      }
+    },
   ],
 }
