@@ -1,3 +1,4 @@
+require('dotenv').config();
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -42,8 +43,8 @@ module.exports = {
               port: 27017
           },
           auth: {
-              user: 'shecodes-rw',
-              password: 'shecodes-rw'
+              user: process.env.MONGODB_READ_ONLY_USER,
+              password: process.env.MONGODB_READ_ONLY_PASS,
           },
           extraParams: {
               replicaSet: 'Main-shard-0',

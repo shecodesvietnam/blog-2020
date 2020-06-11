@@ -13,7 +13,6 @@ const CardArticle = (props) => (
       <Card.Description>
         {
           props.article.content.split('\\n').map((item, i) => {
-            console.log(item);
             return <p key={i}>{item}</p>;
           })
         }
