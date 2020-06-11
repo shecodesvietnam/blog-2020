@@ -1,11 +1,10 @@
 import React from "react";
-import { Card, Icon, Image } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 
 const CardArticle = (props) => (
   <Card
-    href="https://www.facebook.com/shecodesvietnam/photos/a.204360333678703/691203938327671/?type=3&theater"
+    href={props.article.link}
     target = "_blank"
-    centered
     color='purple'>
     <Image src={props.article.image} wrapped ui={false} />
     <Card.Content>
